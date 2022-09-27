@@ -4,13 +4,14 @@ function love.load()
     window_width = love.graphics.getWidth()
     window_height = love.graphics.getHeight()
     
-    -- Need this to create classes and objects
+    -- Need details in classic.lua to create classes
     Object = require "classic"
 
     -- Pull in relevant files
     require "character"
     require "player"
     require "enemy"
+    require "slash"
 
     -- Set background color to gray
     love.graphics.setBackgroundColor(0.5,0.5,0.5)
@@ -18,6 +19,8 @@ function love.load()
     -- Instantiate player and enemy objects
     player = Player()
     enemy = Enemy()
+
+    listOfSlashes = {}
 
 end
 
@@ -29,10 +32,22 @@ function love.update(dt)
     
     -- Enemy movements and boundaries
     enemy:update(dt)
+
+    for i,v in ipairs(listOfSlashes) do
+        v:update(dt)
+    end
 end
 
 -- Continuously runs
 function love.draw()
     player:draw()
     enemy:draw()
+
+    for i,v in ipairs(listOfSlashes) do
+        v:draw()
+    end
+end
+
+function love.keypressed(key)
+    player:attack(key)
 end

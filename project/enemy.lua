@@ -1,4 +1,4 @@
--- Create the Enemy class
+-- Create the Enemy class. Also inherits from Character class
 Enemy = Character:extend()
 
 -- Constructor

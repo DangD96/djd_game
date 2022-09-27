@@ -1,4 +1,4 @@
--- Create the Player class
+-- Create the Player class. Inherits from Character class
 Player = Character:extend()
 
 -- Constructor
@@ -19,6 +19,12 @@ end
 
 function Player:draw()
     love.graphics.draw(self.image, self.x, self.y, self.rotation, self.scaleX, self.scaleY)
+end
+
+function Player:attack(key)
+    if key == "space" then
+        table.insert(listOfSlashes, Slash(self.x, self.y))
+    end
 end
 
 function Player:bankai()
