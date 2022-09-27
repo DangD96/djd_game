@@ -1,3 +1,4 @@
+-- Runs once at the start of the game
 function love.load()
     -- Dimensions of the game window
     window_width = love.graphics.getWidth()
@@ -20,6 +21,7 @@ function love.load()
 
 end
 
+-- Continuously runs
 function love.update(dt)
     -- Control player movement and boundaries
     player:update(dt)
@@ -29,8 +31,8 @@ function love.update(dt)
     enemy:update(dt)
 end
 
+-- Continuously runs
 function love.draw()
     player:draw()
     enemy:draw()
-
 end

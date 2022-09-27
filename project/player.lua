@@ -23,6 +23,7 @@ end
 
 function Player:bankai()
     if love.keyboard.isDown("b") then
-        self.image = love.graphics.newImage("player_attack1.png")
+        self.image = love.graphics.newImage("player_powerup.png")
+        self.speed = 300
     end
 end

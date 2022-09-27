@@ -22,12 +22,17 @@ function Enemy:draw()
 end
 
 function Enemy:update(dt)
-    -- Make enemy move randomly
+    -- Make enemy move randomly. Bias towards horizontal movement
     number = love.math.random()
-    if number <= 0.5 then
-        self.x = self.x + self.speed * dt
-    else
+    if number < 0.25 then
+        self.y = self.y - self.speed * dt
+    elseif number < 0.5 and number >= 0.25 then
+        self.x = self.x - self.speed * dt
         self.y = self.y + self.speed * dt
+    elseif number < 0.75 and number >= 0.5 then
+        self.x = self.x - self.speed * dt
+    else
+        self.x = self.x + self.speed * dt
     end
 
     -- Makes enemy bounce against the borders
