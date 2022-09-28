@@ -48,6 +48,8 @@ function Slash:checkCollision(obj)
     and left_edge < enemy_right
     and bottom_edge > enemy_top
     and top_edge < enemy_bottom then
-        obj.health = obj.health - 1
+        -- Since love.update constantly runs, obj.health constantly gets decremented as soon as it makes contact with an attack
+        -- Decreasing number here so characters can withstand about 5 hits
+        obj.health = obj.health - 0.025
     end
 end

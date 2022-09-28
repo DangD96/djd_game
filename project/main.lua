@@ -24,6 +24,8 @@ function love.load()
     -- Create tables to store different attack objects
     listOfSlashes = {}
     listofArrows = {}
+
+    isGameOver = false
 end
 
 
@@ -69,16 +71,14 @@ function love.draw()
     end
     
     --Check health
-    if player.health == 0 then
-        love.graphics.print("You lose!", 400, 300)
-        love.timer.sleep(3)
-        love.load()
+    if player.health < 0 then
+        love.graphics.print("You lose! Press Q to restart.", 400, 300)
+        isGameOver = true
     end
 
-    if enemy.health == 0 then
-        love.graphics.print("You win!", 400, 300)
-        love.timer.sleep(3)
-        love.load()
+    if enemy.health < 0 then
+        love.graphics.print("You win! Press Q to restart.", 400, 300)
+        isGameOver = true
     end
 end
 
@@ -89,6 +89,10 @@ function love.keypressed(key)
         player.bankai = true
         player.image = love.graphics.newImage("player_powerup.png")
         player.speed = 300
+    end
+
+    if isGameOver and key == "q" then
+        love.load()
     end
 
     player:attack(key)
