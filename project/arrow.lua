@@ -42,6 +42,6 @@ function Arrow:checkCollision(obj)
     and left_edge < enemy_right
     and bottom_edge > enemy_top
     and top_edge < enemy_bottom then
-        love.load()
+        obj.health = obj.health - 1
     end
 end

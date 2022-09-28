@@ -56,8 +56,9 @@ end
 
 -- Fires attack if RNG falls within certain range
 function Enemy:attack(num)
-    if num <= 0.5 and num >= 0.45 then
+    local num = love.math.random()
+    if num <= 0.5 and num >= 0.48 then
         table.insert(listofArrows, Arrow(self.x, self.y))
-        return true
     end
 end
+

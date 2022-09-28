@@ -15,6 +15,7 @@ function Player:new()
     self.rotation = 0
     self.scaleX = 0.1
     self.scaleY = 0.1
+    self.bankai = false
 end
 
 
@@ -26,15 +27,6 @@ end
 -- Fires attack if you press the spacebar
 function Player:attack(key)
     if key == "space" then
-        table.insert(listOfSlashes, Slash(self.x, self.y))
-    end
-end
-
-
--- Powers player up if you press b
-function Player:bankai(key)
-    if key == "b" then
-        self.image = love.graphics.newImage("player_powerup.png")
-        self.speed = 300
+        table.insert(listOfSlashes, Slash(self))
     end
 end

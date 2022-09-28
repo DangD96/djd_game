@@ -1,10 +1,16 @@
 Slash = Object:extend()
 
 -- Pass in the player's x/y position so know where to launch the attack from
-function Slash:new(x, y)
-    self.image = love.graphics.newImage("player_attack1.png")
-    self.x = x
-    self.y = y
+function Slash:new(obj)
+    -- Use different slash attack if you're powered up
+    if obj.bankai then
+        self.image = love.graphics.newImage("player_attack2.png")
+    else
+        self.image = love.graphics.newImage("player_attack1.png")
+    end
+
+    self.x = obj.x
+    self.y = obj.y
     self.rotation = 0
     self.scaleX = 0.1
     self.scaleY = 0.1
@@ -42,6 +48,6 @@ function Slash:checkCollision(obj)
     and left_edge < enemy_right
     and bottom_edge > enemy_top
     and top_edge < enemy_bottom then
-        love.load()
+        obj.health = obj.health - 1
     end
 end

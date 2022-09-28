@@ -21,10 +21,9 @@ function love.load()
     player = Player()
     enemy = Enemy()
 
-    -- Create table to store different attack objects
+    -- Create tables to store different attack objects
     listOfSlashes = {}
     listofArrows = {}
-
 end
 
 
@@ -32,7 +31,6 @@ end
 function love.update(dt)
     -- Control player movement and boundaries
     player:update(dt)
-    player:bankai()
     
     -- Enemy movements and boundaries
     enemy:update(dt)
@@ -44,13 +42,14 @@ function love.update(dt)
     end
 
     -- Enemy's attacks
-    local num = love.math.random()
-    enemy:attack(num)
+    enemy:attack()
     
     for i,v in ipairs(listofArrows) do
         v:update(dt)
         v:checkCollision(player)
     end
+
+
 end
 
 
@@ -68,10 +67,29 @@ function love.draw()
     for i,v in ipairs(listofArrows) do
         v:draw()
     end
+    
+    --Check health
+    if player.health == 0 then
+        love.graphics.print("You lose!", 400, 300)
+        love.timer.sleep(3)
+        love.load()
+    end
+
+    if enemy.health == 0 then
+        love.graphics.print("You win!", 400, 300)
+        love.timer.sleep(3)
+        love.load()
+    end
 end
 
--- Callback function that listens for a key press from player
+
+-- Callback function that listens for key presses from player
 function love.keypressed(key)
+    if key == "b" then
+        player.bankai = true
+        player.image = love.graphics.newImage("player_powerup.png")
+        player.speed = 300
+    end
+
     player:attack(key)
-    player:bankai(key)
 end
