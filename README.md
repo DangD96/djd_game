@@ -1,5 +1,5 @@
 # Bleach2D
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://youtu.be/KmyHjPMkrSE
 #### Description:
 To celebrate the return of the [Bleach](https://en.wikipedia.org/wiki/Bleach_(TV_series)#Thousand-Year_Blood_War) anime, I will be creating a "shooting" game. The player will control Ichigo (the main character) and attempt to defeat the enemy (Uryu). The enemy will fire arrows at the player and if the player is hit by an arrow, they lose health. If the player loses all their health, the game is over. Conversely, the player can fire attacks at the enemy using the spacebar. Same rules apply. However, the enemy moves faster than the player and can attack more frequently too. To balance this, the player has an option to power up (Bankai) by pressing the "b" key. After powering up, the player's sprite looks different, fires a different looking attack, and its movement speed increases. Whoever runs out of health first loses the game. This game was created using Lua and the LOVE framework.
 
