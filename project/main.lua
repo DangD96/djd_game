@@ -37,6 +37,7 @@ function love.update(dt)
 
     for i,v in ipairs(listOfSlashes) do
         v:update(dt)
+        v:checkCollision(enemy)
     end
 end
 

@@ -23,7 +23,7 @@ end
 
 function Enemy:update(dt)
     -- Make enemy move randomly. Bias towards horizontal movement
-    number = love.math.random()
+    local number = love.math.random()
     if number < 0.25 then
         self.y = self.y - self.speed * dt
     elseif number < 0.5 and number >= 0.25 then
