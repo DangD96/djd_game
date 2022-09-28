@@ -12,6 +12,7 @@ function love.load()
     require "player"
     require "enemy"
     require "slash"
+    require "arrow"
 
     -- Set background color to gray
     love.graphics.setBackgroundColor(0.5,0.5,0.5)
@@ -26,6 +27,7 @@ function love.load()
 
 end
 
+
 -- Continuously runs
 function love.update(dt)
     -- Control player movement and boundaries
@@ -34,24 +36,41 @@ function love.update(dt)
     
     -- Enemy movements and boundaries
     enemy:update(dt)
-
+    
+    -- Player's attacks
     for i,v in ipairs(listOfSlashes) do
         v:update(dt)
         v:checkCollision(enemy)
     end
+
+    -- Enemy's attacks
+    local num = love.math.random()
+    enemy:attack(num)
+    
+    for i,v in ipairs(listofArrows) do
+        v:update(dt)
+        v:checkCollision(player)
+    end
 end
+
 
 -- Continuously runs
 function love.draw()
     player:draw()
     enemy:draw()
 
+    -- Player's attacks
     for i,v in ipairs(listOfSlashes) do
+        v:draw()
+    end
+
+    -- Enemy's attacks
+    for i,v in ipairs(listofArrows) do
         v:draw()
     end
 end
 
--- Callback function that listen for a key press
+-- Callback function that listens for a key press from player
 function love.keypressed(key)
     player:attack(key)
     player:bankai(key)

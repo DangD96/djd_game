@@ -17,9 +17,11 @@ function Player:new()
     self.scaleY = 0.1
 end
 
+
 function Player:draw()
     love.graphics.draw(self.image, self.x, self.y, self.rotation, self.scaleX, self.scaleY)
 end
+
 
 -- Fires attack if you press the spacebar
 function Player:attack(key)
@@ -27,6 +29,7 @@ function Player:attack(key)
         table.insert(listOfSlashes, Slash(self.x, self.y))
     end
 end
+
 
 -- Powers player up if you press b
 function Player:bankai(key)

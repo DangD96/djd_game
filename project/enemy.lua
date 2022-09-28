@@ -17,9 +17,11 @@ function Enemy:new()
     self.scaleY = 0.5
 end
 
+
 function Enemy:draw()
     love.graphics.draw(self.image, self.x, self.y, self.rotation, self.scaleX, self.scaleY)
 end
+
 
 function Enemy:update(dt)
     -- Make enemy move randomly. Bias towards horizontal movement
@@ -48,5 +50,14 @@ function Enemy:update(dt)
     elseif self.y > window_height - self.height*self.scaleY then
         self.y = window_height - self.height*self.scaleY
         self.speed = -self.speed
+    end
+end
+
+
+-- Fires attack if RNG falls within certain range
+function Enemy:attack(num)
+    if num <= 0.5 and num >= 0.45 then
+        table.insert(listofArrows, Arrow(self.x, self.y))
+        return true
     end
 end
