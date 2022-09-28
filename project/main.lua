@@ -20,7 +20,9 @@ function love.load()
     player = Player()
     enemy = Enemy()
 
+    -- Create table to store different attack objects
     listOfSlashes = {}
+    listofArrows = {}
 
 end
 
@@ -48,6 +50,8 @@ function love.draw()
     end
 end
 
+-- Callback function that listen for a key press
 function love.keypressed(key)
     player:attack(key)
+    player:bankai(key)
 end
